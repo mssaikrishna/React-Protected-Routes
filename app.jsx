@@ -20,6 +20,7 @@ import ProtectedRoute from './protectedroute.jsx'
 export default function App() {
  
   const isAuth = localStorage.getItem('token') != null;
+  console.log(isAuth)
   return (
     // <Routes>
     //   {/* <Route path="/" element={<Home />} /> */}
@@ -37,7 +38,8 @@ export default function App() {
         <Route path="/holiday-list" element={<HolidayList />} />
         <Route path="/vofox-calendar" element={<VofoxCalendar />} />
         <Route path="/logout" element={<LogOut />} />
-        <ProtectedRoute><Route path="/dashboard" element={<Dashboard />} auth={isAuth} /></ProtectedRoute>
+//         <ProtectedRoute><Route path="/dashboard" element={<Dashboard />} auth={isAuth} /></ProtectedRoute>
+        <Route path="/dashboard" element={<ProtectedRoute auth={isAuth}><Dashboard/></ProtectedRoute>}></Route>
         <Route path="/leave-calendar" element={<LeaveCalendar />} />
         <Route path="/leave-display-calendar" element={<LeaveDisplayCalendar />} />
        <Route path="/leave-calendar-application" element={<LeaveCalendarComponent />} />
